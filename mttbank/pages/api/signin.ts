@@ -18,8 +18,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const user = await prisma.user.findUnique({
             where: {
                 email
-            }
-        })
+            },
+            include: {
+                accounts: {
+                    include: {
+                        transactions: true
+                    }
+                }
+            },
+        }) 
 
         if (!user) {
             return res.status(404).json({ message: "Failed" }) 
@@ -31,9 +38,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(401).json({ message: "Failed" }) 
         }
 
-        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET || "test", {expiresIn: '1h'})
+        const token = jwt.sign({ user }, process.env.JWT_SECRET || "test", {expiresIn: '1h'})
 
-        res.status(200).json({ token, user })
+        res.status(200).json({ token })
     } catch (err) {
         return res.status(500).json({ message: `An error happend: ${err}` })
     }

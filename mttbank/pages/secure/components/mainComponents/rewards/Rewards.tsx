@@ -1,29 +1,48 @@
-import Button_Global from '@/pages/global/Button_Global'
-import { Box, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Button, Text } from '@chakra-ui/react'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 
-const Rewards = () => {
+interface RewardsInterface {
+    props: any
+}
+
+const Rewards: React.FC<RewardsInterface> = ({ props }) => {
+    const [isLoading, setIsLoading] = useState("")
+    const router = useRouter();
+
+    const redeem = (name: string) => {
+        setIsLoading(name)
+        try {
+            axios.post('/api/deleteReward', {
+                rewardName: name,
+                userId: props.id
+            }).then((res) => {
+                alert("Changes will take affect when logged back in")
+                router.push("/logout")
+            })
+        } catch(err) {
+            alert("Changes will take affect when logged back in")
+            router.push("/logout")
+        } 
+    }
     return (
         <Box className='bg-gray-100 p-7 rounded-lg'>
             <Box className='flex justify-between items-center pb-2'>
-                <Text className='font-bold text-xl'>Rewards</Text>
-                <Button_Global name="View All" />
+                <Text className='font-bold text-xl'>Rewards</Text> 
             </Box>
             <div className='border-b-2' />
-            <Box className='flex justify-between mt-5'>
-                <Box>
-                    <Text className='pb-2'>Main Account Balance</Text>
-                    <Text className='font-bold text-xl pb-2'>$1500</Text>
-                </Box>
-                <Box>
-                    <Box className='flex pb-2 items-center gap-3'>
-                        <Text>Deposits/Withdrawals (Monthly)</Text>
-                    </Box>
-                    <Box className='flex font-bold text-lg gap-5'>
-                        <Text>+ $1000</Text>
-                        <Text>- $500</Text>
-                    </Box>
-                </Box>
+            <Box className='grid lg:grid-cols-5 grid-cols-2 gap-5 mt-5'>
+                {props.rewards.map((item: any, index: any) => (
+                    <Box key={index} className='p-3 bg-slate-200 rounded-lg'>
+                    <Text className='text-xl font-bold mb-2'>{item}</Text> 
+                    {isLoading == item ? (
+                        <Button colorScheme='teal' className="w-full shadow" isLoading>Redeem</Button>
+                    ) : (
+                        <Button colorScheme='teal' className="w-full shadow" onClick={() => redeem(item)}>Redeem</Button>
+                    )}
+                </Box> 
+                ))}
             </Box>
         </Box>
     )

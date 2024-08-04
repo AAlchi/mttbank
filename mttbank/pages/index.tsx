@@ -1,9 +1,8 @@
- // import Home_Authentication from "./authentication";
-import Homes from "./secure/"; 
+ import Home_Authentication from "./authentication"; 
  
 
 export default function Home() {
   return ( 
-      <Homes /> 
+      <Home_Authentication /> 
   );
 }

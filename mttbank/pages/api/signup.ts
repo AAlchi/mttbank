@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next"; 
+import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "./prismaClient";
 import bcrypt from 'bcrypt';
 
@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const password = req.body.password as string
 
         if (name == "" || email == "" || password == "") {
-            return res.status(404).json({ message: "Missing data" }) 
+            return res.status(404).json({ message: "Missing data" })
         }
 
         const hashedPass = await bcrypt.hash(password, 10)
@@ -21,7 +21,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             data: {
                 creditScore: 800,
                 rewards: [],
-                accounts: [],
+                accounts: {
+                    create: [
+                        { 
+                            balance: 3000,
+                            deposits: 36,
+                            withdrawals: 4234,
+                            date: new Date(), 
+                            transactions: {
+                                create: [
+                                    {
+                                        merchant: "home depot",
+                                        date: new Date("2024-12-02"),
+                                        amount: 25,
+                                        type: "p"
+                                    },
+                                    {
+                                        merchant: "home",
+                                        date: new Date("2024-12-02"),
+                                        amount: 25,
+                                        type: "n"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
                 name: name,
                 email: email,
                 password: hashedPass

@@ -20,7 +20,7 @@ const Header = () => {
                 </Box>
                 <Box className='flex gap-5'>
                     <SideView />
-                    <ArrowForwardIcon onClick={() => router.push("/authentication")} cursor="pointer"/>
+                    <ArrowForwardIcon onClick={() => router.push("/logout")} cursor="pointer"/>
                 </Box>
             </header>
             <header className='flex flex-col px-6 py-4 bg-white lg:hidden'>
@@ -32,7 +32,7 @@ const Header = () => {
 
                     <Box className='flex gap-5'>
                         <SideView />
-                        <ArrowForwardIcon onClick={() => router.push("/authentication")} cursor="pointer"/>
+                        <ArrowForwardIcon onClick={() => router.push("/logout")} cursor="pointer"/>
                     </Box>
                 </div>
                 <Box className='flex gap-5'>

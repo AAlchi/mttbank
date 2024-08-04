@@ -7,8 +7,7 @@ const Chat = () => {
     return (
         <Box className='relative bg-gray-100 p-7 rounded-lg' height="600px">
             <Box className='flex justify-between items-center pb-2'>
-                <Text className='font-bold text-xl'>Chat</Text>
-                <Button_Global name="View Transactions" />
+                <Text className='font-bold text-xl'>Chat</Text> 
             </Box>
             <div className='border-b-2' /> 
                 <Box className='flex flex-col justify-between gap-5 mt-5' maxHeight="430px" overflowY="scroll">

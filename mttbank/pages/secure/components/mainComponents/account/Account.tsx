@@ -1,35 +1,54 @@
 import Button_Global from '@/pages/global/Button_Global'
-import { Box, Stat, StatHelpText, StatLabel, StatNumber, Text } from '@chakra-ui/react'
+import { Box, Button, Stat, StatHelpText, StatLabel, StatNumber, Text } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import React from 'react'
 
-const Account = () => {
+interface AccountInterface {
+    props: {
+    }
+}
+
+const Account: React.FC<AccountInterface> = ({ props }) => {
+    const router = useRouter()
+    return (
+        <AccountsBlock props={props}/>
+    )
+}
+
+interface AccountsBlockInterface {
+    props: any
+}
+
+const AccountsBlock: React.FC<AccountsBlockInterface> = ({ props }) => {
+    const router = useRouter()
     return (
         <Box className='bg-gray-100 p-7 rounded-lg'>
             <Box className='flex justify-between items-center pb-2'>
                 <Text className='font-bold text-xl'>Accounts</Text>
-                <Button_Global name="View Transactions" />
+                <Button onClick={() => router.push('/secure/transactions')} colorScheme='teal'>View Transactions</Button>
             </Box>
-            <div className='border-b-2' /> 
-                <Box className='flex justify-between mt-5'>
+            <div className='border-b-2' />
+            {props.accounts?.map((item: any, index: any) => (
+                <Box key={index} className='flex justify-between mt-5'>
                     <Box>
-                        <Text className='pb-2'>Main Account Balance</Text>
-                        <Text className='font-bold text-xl pb-2'>$1500</Text>
+                        <Text className='pb-2'>Account Balance</Text>
+                        <Text className='font-bold text-xl pb-2'>${item.balance}</Text>
                     </Box>
-                    <Box> 
+                    <Box>
+                        <Text>Acc ID: {item.id}</Text>
                         <Box className='flex font-bold text-lg gap-5'>
-                        <Stat>
-                            <StatLabel>Deposits</StatLabel>
-                            <StatNumber>$0.00</StatNumber>
-                            <StatHelpText>Feb 12 - Feb 28</StatHelpText>
-                        </Stat>
-                        <Stat>
-                            <StatLabel>Withdrawals</StatLabel>
-                            <StatNumber>$0.00</StatNumber>
-                            <StatHelpText>Feb 12 - Feb 28</StatHelpText>
-                        </Stat>
+                            <Stat>
+                                <StatLabel>Deposits</StatLabel>
+                                <StatNumber>${item.deposits}</StatNumber>
+                            </Stat>
+                            <Stat>
+                                <StatLabel>Withdrawals</StatLabel>
+                                <StatNumber>${item.withdrawals}</StatNumber>
+                            </Stat>
                         </Box>
                     </Box>
-                </Box> 
+                </Box>
+            ))}
         </Box>
     )
 }

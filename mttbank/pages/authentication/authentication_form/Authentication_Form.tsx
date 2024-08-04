@@ -51,8 +51,8 @@ const Authentication_Form: React.FC<Authentication_Form_Interface> = ({
             })
 
             if (post) {
+                localStorage.setItem('token', post.data.token)
                 router.push('/')
-                console.log(post)
             }
         } catch (err) {
             setError(true)
