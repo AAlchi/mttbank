@@ -3,18 +3,21 @@ import React, { useState } from 'react'
 
 interface ButtonInterface {
     name: String; 
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    isLoading?: boolean
 }
 
 const Button_Global: React.FC<ButtonInterface> = ({
     name, 
-}) => {
-    const [isLoading, setIsLoading] = useState(false)
+    onClick,
+    isLoading
+}) => { 
     return (
         <Button 
             colorScheme='teal'
             isLoading={isLoading}
             type='submit'
-            onClick={() => isLoading}
+            onClick={() => onClick}
         >
             {name}
         </Button>

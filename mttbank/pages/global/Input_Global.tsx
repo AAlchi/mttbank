@@ -10,13 +10,15 @@ import {
 interface Input_Global_Interface {
   title: String;
   description: String;
-  type: String
+  type: String;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input_Global: React.FC<Input_Global_Interface> = ({
   title,
   description,
-  type
+  type,
+  onChange
 }) => {
   return (
     <FormControl>

@@ -3,17 +3,12 @@ import React from 'react'
  
 
 const Feedback_Global = () => {
-    const {
-        isOpen: isVisible,
-        onClose, 
-      } = useDisclosure({ defaultIsOpen: true })
-    
-      return isVisible && (
-        <Alert status='error' onClick={onClose}>
+      return (
+        <Alert status='error'>
           <AlertIcon />
           <Box> 
             <AlertDescription>
-              Alert
+              There was an error. Please try again
             </AlertDescription>
           </Box> 
         </Alert>
