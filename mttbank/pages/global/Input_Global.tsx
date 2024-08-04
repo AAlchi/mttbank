@@ -1,15 +1,15 @@
 import React from 'react'
 import {
-    FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
-    Input
-  } from '@chakra-ui/react'
-  
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input
+} from '@chakra-ui/react'
+
 interface Input_Global_Interface {
   title: String;
-  description: String; 
+  description: String;
   type: String
 }
 
@@ -19,11 +19,16 @@ const Input_Global: React.FC<Input_Global_Interface> = ({
   type
 }) => {
   return (
-      <FormControl>
-          <FormLabel>{title}</FormLabel>
-          <FormHelperText pb="4">{description}</FormHelperText> 
-          <Input type={`${type}`}/>
-      </FormControl>
+    <FormControl>
+      {title != "" && (
+        <FormLabel>{title}</FormLabel>
+
+      )}
+      {description != "" && (
+        <FormHelperText paddingBottom="10px">{description}</FormHelperText>
+      )}
+      <Input backgroundColor="lightgray" type={`${type}`} />
+    </FormControl>
   )
 }
 

@@ -2,20 +2,19 @@ import { Button } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
 interface ButtonInterface {
-    name: String;
+    name: String; 
 }
 
 const Button_Global: React.FC<ButtonInterface> = ({
-    name
+    name, 
 }) => {
     const [isLoading, setIsLoading] = useState(false)
     return (
-        <Button
-            mt={4}
+        <Button 
             colorScheme='teal'
             isLoading={isLoading}
             type='submit'
-            onClick={() => setIsLoading(true)}
+            onClick={() => isLoading}
         >
             {name}
         </Button>
