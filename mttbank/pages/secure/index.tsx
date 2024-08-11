@@ -21,13 +21,15 @@ const index: React.FC<HomePageInterface> = ({
       <Header />
       <div className='grid grid-cols-1 gap-5 p-10 lg:grid hidden'>
         <Text className='font-bold text-3xl'>Hi, {props.name}!</Text>
-        <Box className='grid grid-cols-3 gap-5 lg:grid hidden'>
+        <Box className='grid grid-cols-2 gap-5 lg:grid hidden'>
           <Box className='grid grid-cols-1 gap-5'>
             <Account props={props}/>
-            <Send />
+            {/* <Send /> */}
+            <Chat />
+
           </Box>
           <Transactions />
-          <Chat />
+
         </Box>
         <Rewards props={props}/>
       </div>
@@ -35,7 +37,7 @@ const index: React.FC<HomePageInterface> = ({
       <div className='flex flex-col gap-5 p-5 flex lg:hidden'>
         <Text className='font-bold text-3xl'>Hi, {props.name}!</Text>
         <Account props={props}/>
-        <Send />
+        {/* <Send /> */}
         <Transactions />
         <Chat />
         <Rewards props={props}/>

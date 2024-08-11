@@ -9,11 +9,7 @@ const Footer = () => {
                 <Box display={'flex'} gap={1} pb={3}>
                     <Text color={'#307c7c'} fontSize='3xl' fontWeight={'bold'}>MTT</Text>
                     <Text fontSize='3xl'>Bank</Text>
-                </Box>
-                <Box className='flex gap-5'>
-                    <BellIcon />
-                    <ArrowForwardIcon />
-                </Box>
+                </Box> 
             </Box>
             <Box className='flex w-full items-start'> 
                 <Box className='flex gap-5'>

@@ -22,7 +22,7 @@ interface AccountsBlockInterface {
 const AccountsBlock: React.FC<AccountsBlockInterface> = ({ props }) => {
     const router = useRouter()
     return (
-        <Box className='bg-gray-100 p-7 rounded-lg'>
+        <Box className='bg-gray-100 p-7 rounded-lg' maxHeight={"600px"} overflow={"auto"}>
             <Box className='flex justify-between items-center pb-2'>
                 <Text className='font-bold text-xl'>Accounts</Text>
                 <Button onClick={() => router.push('/secure/transactions')} colorScheme='teal'>View Transactions</Button>
@@ -35,7 +35,7 @@ const AccountsBlock: React.FC<AccountsBlockInterface> = ({ props }) => {
                         <Text className='font-bold text-xl pb-2'>${item.balance}</Text>
                     </Box>
                     <Box>
-                        <Text>Acc ID: {item.id}</Text>
+                        <Text className='text-sm'>Acc ID: {item.id}</Text>
                         <Box className='flex font-bold text-lg gap-5'>
                             <Stat>
                                 <StatLabel>Deposits</StatLabel>
@@ -49,6 +49,9 @@ const AccountsBlock: React.FC<AccountsBlockInterface> = ({ props }) => {
                     </Box>
                 </Box>
             ))}
+            {props.accounts.length == 0 && (
+                <Text paddingTop={5}>No accounts</Text>
+            )}
         </Box>
     )
 }

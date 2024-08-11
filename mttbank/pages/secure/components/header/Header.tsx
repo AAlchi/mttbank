@@ -16,10 +16,10 @@ const Header = () => {
                 <Box className='flex gap-5'>
                     <Link href="/secure/transactions">Transactions</Link>
                     <Link href="/secure/open">Open an Account</Link>
-                    <Link href="/secure/send">Send & Recieve</Link>
+                    {/* <Link href="/secure/send">Send & Recieve</Link> */}
                 </Box>
                 <Box className='flex gap-5'>
-                    <SideView />
+                    {/* <SideView /> */}
                     <ArrowForwardIcon onClick={() => router.push("/logout")} cursor="pointer"/>
                 </Box>
             </header>
@@ -31,14 +31,14 @@ const Header = () => {
                     </Link>
 
                     <Box className='flex gap-5'>
-                        <SideView />
+                        {/* <SideView /> */}
                         <ArrowForwardIcon onClick={() => router.push("/logout")} cursor="pointer"/>
                     </Box>
                 </div>
                 <Box className='flex gap-5'>
                     <Link href="/secure/transactions">Transactions</Link>
                     <Link href="/secure/open">Open an Account</Link>
-                    <Link href="/secure/send">Send & Recieve</Link>
+                    {/* <Link href="/secure/send">Send & Recieve</Link> */}
                 </Box>
             </header>
         </>

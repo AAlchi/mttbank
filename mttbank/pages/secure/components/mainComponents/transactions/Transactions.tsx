@@ -50,7 +50,7 @@ const TransactionsBlock: React.FC<TransactionsBlockInterface> = ({isLoading, use
 
         {!isLoading && userData && (userData.accounts?.map((item: any, index: any) => (
             <Box key={index} className="flex flex-col mt-5">
-                <Text className="font-bold text-xl mb-3">Account ID: {item.accountId}</Text>
+                <Text className="font-bold text-md mb-3">Account ID: {item.id}</Text>
                 {item.transactions.map((tItem: any, tIndex: any) => (
                     <Box key={tIndex} className="flex justify-between mt-2">
                         <Text>{tItem.merchant}</Text>
@@ -64,6 +64,9 @@ const TransactionsBlock: React.FC<TransactionsBlockInterface> = ({isLoading, use
                         </Box>
                     </Box>
                 ))}
+                {item.transactions.length == 0 && (
+                    <Text>No transactions</Text>
+                )}
             </Box>
         ))) as any}
     </Box>

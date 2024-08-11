@@ -21,7 +21,7 @@ const Send = () => {
                 </Box>
                 <Box className='flex gap-2 flex-col justify-between'>
                     <Button_Global name="Send Money" />
-                    <Button_Global name="Request Money" />
+                    {/* <Button_Global name="Request Money" /> */}
                 </Box>
             </Box>
         </Box>
